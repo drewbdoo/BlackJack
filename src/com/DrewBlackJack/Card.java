@@ -10,6 +10,11 @@ public class Card {
         this.rank = rank;
     }
 
+    public Card(Card card) {
+        this.suit = card.getSuit();
+        this.rank = card.getRank();
+    }
+
     //Gets the numerical value of the card rank i.e. 4, 8
     public int getValue(){
         return rank.rankValue;

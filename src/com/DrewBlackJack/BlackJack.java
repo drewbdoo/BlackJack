@@ -1,13 +1,22 @@
 package com.DrewBlackJack;
 
-import com.blackjack.Game;
+
+import java.util.Scanner;
 
 public class BlackJack {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        Scanner scan = new Scanner(System.in);
         System.out.println("Welcome to BlackJack");
-        Game blackjack = new Game();
-        Deck testDeck = new Deck(true);
-        System.out.println(testDeck);
+        System.out.println("Please provide the name for the player");
+        String name = scan.nextLine();
+
+
+        Game blackjack = new Game(name);
+
+
+
+
+
 
 
 
