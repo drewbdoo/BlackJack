@@ -10,12 +10,12 @@ public class Player extends Person {
 
     }
 
-    public void makeDecision(Deck deck, Deck discard){
+    public void makeDecision(Deck deck, Deck discard) throws InterruptedException {
         int decision = 0;
         boolean getNum = true;
         while (getNum){
             try{
-                System.out.println("Would you like to:");
+                System.out.println("What would you like to do now?");
                 System.out.println("1) Hit ");
                 System.out.println("or");
                 System.out.println("2) Stay");
@@ -26,7 +26,9 @@ public class Player extends Person {
                 scan.next();
             }
         }
-        System.out.println("You selected " + decision);
+        Thread.sleep(1000);
+        System.out.println("You selected " + decision +"\n");
+        Thread.sleep(1000);
         if(decision==1){
             this.hit(deck, discard);
             //Check to see if they hit blackjack or busted
@@ -37,7 +39,9 @@ public class Player extends Person {
                 this.makeDecision(deck, discard);
             }
         }else{
-            System.out.println("You stand.");
+            Thread.sleep(1000);
+            System.out.println("You stand." + "\n"+ "\n");
+            Thread.sleep(1000);
         }
 
     }

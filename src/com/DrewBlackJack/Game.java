@@ -10,7 +10,7 @@ public class Game {
     private Player player;
 
 
-    public Game(String name){
+    public Game(String name) throws InterruptedException {
         //Generate a new deck of 52
         deck = new Deck(true);
         //Make an empty deck for the discarded cards
@@ -27,7 +27,7 @@ public class Game {
         pushes = 0;
     }
 
-    private void startRound(){
+    private void startRound() throws InterruptedException {
         if (wins > 0 || losses > 0 || pushes > 0) {
             System.out.println();
             System.out.println("Starting Next Round....");

@@ -9,8 +9,9 @@ public class Dealer extends Person {
 
     //Shows the dealer's first hand
     public void printFirstHand(){
-        System.out.println("The dealer's hand looks like this: ");
+        System.out.println("\n" + "The dealer deals himself and you two cards. " + "\n" + "\n"+
+                "You see he is showing"+"\n"+"\n");
         System.out.println("* "+super.getHand().getCard(0)+" *");
-        System.out.println("The second card is face down: ");
+        System.out.println("\n"+"His second card remains hidden" + "\n");
     }
 }

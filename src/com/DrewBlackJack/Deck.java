@@ -27,7 +27,7 @@ public class Deck {
     }
     //Shuffles the deck
     public void shuffle(){
-        //Using built in Collections suffle method
+        //Using built in Collections shuffle method
         Collections.shuffle(deck, new Random());
 
 //        //Next lines are for education on how the shuffling works

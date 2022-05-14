@@ -16,8 +16,8 @@ public class Person {
         }
     }
     public void printHand(){
-        System.out.println(this.getName()+"'s hand looks like this:");
-        System.out.println(this.getHand()+" Valued at: "+ this.getHand().calculatedValue());
+        System.out.println(this.getName()+"'s hand are the following cards:"+"\n"+"\n");
+        System.out.println(this.getHand()+" Valued at: "+ this.getHand().calculatedValue()+ "\n");
     }
     public void hit(Deck deck, Deck discard){
         //Check  for no cards left in the deck
@@ -25,7 +25,7 @@ public class Person {
             deck.reloadDeckFromDiscard(discard);
         }
         this.hand.takeCardFromDeck(deck);
-        System.out.println(this.getName() + " gets a card");
+        System.out.println(this.getName() + " gets a card" + "\n" +"\n");
         this.printHand();
 
     }
