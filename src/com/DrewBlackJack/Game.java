@@ -1,5 +1,7 @@
 package com.DrewBlackJack;
 
+import java.sql.SQLOutput;
+
 public class Game {
     private int wins, losses, pushes;
 
@@ -26,6 +28,19 @@ public class Game {
     }
 
     private void startRound(){
+        if (wins > 0 || losses > 0 || pushes > 0) {
+            System.out.println();
+            System.out.println("Starting Next Round....");
+            System.out.println("Wins: "+wins);
+            System.out.println("Losses: "+losses);
+            System.out.println("Pushes: "+pushes);
+            dealer.getHand().discardHandToDeck(discarded);
+            player.getHand().discardHandToDeck(discarded);
+        }
+        //Make sure there are at least 4 cards left in deck
+        if(deck.cardsLeft()<4){
+            deck.reloadDeckFromDiscard(discarded);
+        }
         //Dealer gets two cards
         dealer.getHand().takeCardFromDeck(deck);
         dealer.getHand().takeCardFromDeck(deck);
@@ -35,6 +50,7 @@ public class Game {
         //Print their hands
         dealer.printFirstHand();
         player.printHand();
+        //Check to see if dealer has blackjack to start
         if(dealer.hasBlackJack()){
             //show that the dealer has blackjack to start
             dealer.printHand();
@@ -57,12 +73,31 @@ public class Game {
             startRound();
         }
         player.makeDecision(deck, discarded);
+
         if(player.getHand().calculatedValue()>21){
             System.out.println("You hand is over 21. BUSTED!");
             losses++;
             //restart the round
             startRound();
         }
+        //dealer's round
+        dealer.printHand();
+        while(dealer.getHand().calculatedValue()<17){
+            dealer.hit(deck,discarded);
+        }
+        //Check who wins
+        if(dealer.getHand().calculatedValue()>21){
+            System.out.println("Dealer busts!");
+            wins++;
+        } else if (dealer.getHand().calculatedValue() > player.getHand().calculatedValue()) {
+            System.out.println("You loose, sowwy.");
+        }else if(player.getHand().calculatedValue()>dealer.getHand().calculatedValue()){
+            System.out.println("Congrats! You win!");
+            wins++;
+        }else{
+            System.out.println("It's a tie - Push.");
+        }
+        startRound();
 
 
 

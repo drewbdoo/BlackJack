@@ -102,7 +102,7 @@ public class Deck {
     }
 
 
-
-
-
+    public int cardsLeft() {
+        return deck.size();
+    }
 }

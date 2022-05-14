@@ -47,4 +47,10 @@ public class Hand {
         return "* " + output;
     }
 
+    public void discardHandToDeck(Deck discardDeck) {
+        //copy cards from hand to discardDeck
+        discardDeck.addCards(hand);
+        //clear the hand
+        hand.clear();
+    }
 }
