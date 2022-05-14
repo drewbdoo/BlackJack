@@ -16,7 +16,7 @@ public class Person {
         }
     }
     public void printHand(){
-        System.out.println(this.getName()+"'s hand are the following cards:"+"\n"+"\n");
+        System.out.println(this.getName()+"'s hand are the following cards:"+"\n");
         System.out.println(this.getHand()+" Valued at: "+ this.getHand().calculatedValue()+ "\n");
     }
     public void hit(Deck deck, Deck discard){

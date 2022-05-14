@@ -57,10 +57,12 @@ public class Game {
             //Check if player also has blackjack
             if(player.hasBlackJack()){
                 System.out.println("You both have 21 - Push.");
+                Thread.sleep(3000);
                 pushes++;
                 startRound();
             }else{
                 System.out.println("Dealer has BlackJack. You lose");
+                Thread.sleep(3000);
                 dealer.printHand();
                 losses++;
                 startRound();
@@ -69,6 +71,7 @@ public class Game {
         //Check if player has blackjack to start
         if(player.hasBlackJack()){
             System.out.println("You have BlackJack! You win!");
+            Thread.sleep(3000);
             wins++;
             startRound();
         }
@@ -76,6 +79,7 @@ public class Game {
 
         if(player.getHand().calculatedValue()>21){
             System.out.println("You hand is over 21. BUSTED!");
+            Thread.sleep(3000);
             losses++;
             //restart the round
             startRound();
@@ -88,14 +92,18 @@ public class Game {
         //Check who wins
         if(dealer.getHand().calculatedValue()>21){
             System.out.println("Dealer busts!");
+            Thread.sleep(3000);
             wins++;
         } else if (dealer.getHand().calculatedValue() > player.getHand().calculatedValue()) {
             System.out.println("You loose, sowwy.");
+            Thread.sleep(3000);
         }else if(player.getHand().calculatedValue()>dealer.getHand().calculatedValue()){
             System.out.println("Congrats! You win!");
+            Thread.sleep(3000);
             wins++;
         }else{
             System.out.println("It's a tie - Push.");
+            Thread.sleep(3000);
         }
         startRound();
 
