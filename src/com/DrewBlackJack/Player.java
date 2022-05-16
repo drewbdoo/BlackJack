@@ -40,11 +40,8 @@ public class Player extends Person {
             }
         }else{
             Thread.sleep(1000);
-            System.out.println("You stand." + "\n"+ "\n");
+            System.out.println("You stand." + "\n");
             Thread.sleep(1000);
         }
-
     }
-
-
 }

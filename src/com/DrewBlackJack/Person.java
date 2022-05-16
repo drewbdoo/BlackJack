@@ -25,7 +25,7 @@ public class Person {
             deck.reloadDeckFromDiscard(discard);
         }
         this.hand.takeCardFromDeck(deck);
-        System.out.println(this.getName() + " gets a card" + "\n" +"\n");
+        System.out.println(this.getName() + " gets a card" +"\n");
         this.printHand();
 
     }

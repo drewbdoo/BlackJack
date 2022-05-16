@@ -11,7 +11,7 @@ public class Dealer extends Person {
 
     //Shows the dealer's first hand
     public void printFirstHand() throws InterruptedException {
-        System.out.println("\n" + "The dealer deals himself and you two cards. " + "\n" + "\n");
+        System.out.println("\n" + "The dealer deals himself and you two cards. " + "\n");
         Thread.sleep(1000);
         System.out.println("You see he is showing"+"\n");
         System.out.println("* "+super.getHand().getCard(0)+" *");

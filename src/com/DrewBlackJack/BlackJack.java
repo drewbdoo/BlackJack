@@ -4,10 +4,14 @@ package com.DrewBlackJack;
 import java.util.Scanner;
 
 public class BlackJack {
-    public static final String ANSI_RESET  = "\u001B[0m";
+    public static final String ANSI_RESET  = "\u001B[33m";
     public static final String ANSI_BRIGHT_PURPLE = "\u001B[95m";
+    public static final String ANSI_RED    = "\u001B[31m";
+
     public static final String ANSI_BLUE   = "\u001B[34m";
     public static final String ANSI_BRIGHT_CYAN   = "\u001B[96m";
+    public static final String ANSI_GREEN  = "\u001B[32m";
+
 
 
 
@@ -25,13 +29,13 @@ public class BlackJack {
                 "     Y8    ,88,    8P I8, ,8I  I8P    i8'       i8'    ,8I   I8   8I   8I   8I  I8, ,8I       ,I8,   i8'    ,8I  \n" +
                 "      Yb,,d8\"\"8b,,dP  `YbadP' ,d8b,_ ,d8,_    _,d8,   ,d8'  ,dP   8I   8I   Yb, `YbadP'      ,d88b, ,d8,   ,d8'  \n" +
                 "       \"88\"    \"88\"  888P\"Y8888P'\"Y88P\"\"Y8888PPP\"Y8888P\"    8P'   8I   8I   `Y8888P\"Y888    88P\"\"Y88P\"Y8888P\"    \n");
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         System.out.println("\n" + ANSI_RESET + ANSI_BRIGHT_CYAN+
                 " ____, ___,   ____, __    _,' ____ \n" +
                 "(-|  \\(-|_)  (-|_, (-| | |   (-(__`\n" +
                 " _|__/ _| \\_, _|__, _|_|_|    ____)\n" +
                 "(     (      (     (         (     \n");
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         System.out.println("\n" + ANSI_BRIGHT_CYAN +
                 "  _        _        _ _             _      _    \n" +
                 " | |      | |      | | |           (_)    | |   \n" +
@@ -41,7 +45,7 @@ public class BlackJack {
                 "  \\__\\___/ \\__\\__,_|_|_|\\__, | |___/_|\\___|_|\\_\\\n" +
                 "                         __/ |                  \n" +
                 "                        |___/                   \n");
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         System.out.println("\n" + ANSI_BRIGHT_PURPLE+
                 "     ...     ..            ..                             ..            .                                       ..      \n" +
                 "  .=*8888x <\"?88h.   x .d88\"                        < .z@8\"`        .x88888x.                             < .z@8\"`      \n" +
@@ -58,15 +62,16 @@ public class BlackJack {
                 "                                                                    `8888>    `888                                      \n" +
                 "                                                                     \"8888     8%                                       \n" +
                 "                                                                      `\"888x:-\"                                         \n"+ ANSI_RESET);
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         System.out.println("Please provide the name for the player");
         String name = scan.nextLine();
+        Thread.sleep(500);
+        System.out.println("Welcome to Drew's totally sick " + ANSI_RED + "Blackjack, " + ANSI_RESET+name+"\n"+"\n"+"You begin play with" + ANSI_GREEN +" $500" + ANSI_RESET+"\n"+
+                "Good luck!"+"\n");
         Thread.sleep(1000);
-        System.out.println("Welcome to Drew's totally sick Blackjack, "+name+"\n"+"You begin play with $500"+"\n"+
-                "Good luck!");
-        Thread.sleep(1000);
-        System.out.println("You're gonna need it...");
+        System.out.println("You're gonna need it..."+"\n"+"\n");
+        Thread.sleep(2000);
         Game blackjack = new Game(name);
 
 

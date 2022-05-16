@@ -3,6 +3,11 @@ package com.DrewBlackJack;
 import java.util.Scanner;
 
 public class Game {
+    public static final String ANSI_RESET  = "\u001B[33m";
+    public static final String ANSI_GREEN  = "\u001B[32m";
+    public static final String ANSI_RED    = "\u001B[31m";
+    public static final String ANSI_BLUE   = "\u001B[34m";
+
     Scanner scanner = new Scanner(System.in);
     private int wins, losses, pushes, totalPot, playerPot, currentBet, playerBet;
 
@@ -37,11 +42,11 @@ public class Game {
 
         if (wins > 0 || losses > 0 || pushes > 0) {
             System.out.println();
-            System.out.println("Starting Next Round....");
-            System.out.println("Wins: "+wins);
-            System.out.println("Losses: "+losses);
-            System.out.println("Pushes: "+pushes);
-            System.out.println("Your current pot is $"+playerPot);
+            System.out.println("Starting Next Round...."+"\n");
+            System.out.println("Wins: "+ ANSI_RED+wins+ANSI_RESET);
+            System.out.println("Losses: "+ANSI_GREEN+losses+ANSI_RESET);
+            System.out.println("Pushes: "+ANSI_BLUE+pushes+ANSI_RESET+"\n");
+            System.out.println("Your current pot is " + ANSI_GREEN+"$"+playerPot+ANSI_RESET+"\n");
             dealer.getHand().discardHandToDeck(discarded);
             player.getHand().discardHandToDeck(discarded);
         }
@@ -64,19 +69,19 @@ public class Game {
         boolean loopVar = true;
         do{
             System.out.println("How much would you like to bet?.");
-            System.out.println("Warning! The casino only accepts bets in increments of $5");
+            System.out.println("Warning! The casino only accepts bets in increments of" +ANSI_GREEN+" $5"+ANSI_RESET);
             String bets = scanner.nextLine();
             int bet = Integer.parseInt(bets);
             if(bet%5!=0){
-                System.out.println("I'm sorry, that is not a multiple of $5");
+                System.out.println("I'm sorry, that is not a multiple of $5"+"\n");
             }else{
                 betToPot(bet);
                 loopVar=false;
             }
         }while(loopVar);
-
-        System.out.println("The current total in the pot is $"+totalPot);
-        System.out.println("You current pot is $"+ playerPot);
+        Thread.sleep(1000);
+        System.out.println("The current total in the pot is "+ANSI_GREEN+"$"+totalPot+"\n"+ANSI_RESET);
+        System.out.println("You current pot is "+ANSI_GREEN+"$"+ playerPot+ANSI_RESET);
         //Print their hands
         dealer.printFirstHand();
         player.printHand();
@@ -92,9 +97,8 @@ public class Game {
                 tieBet();
                 startRound();
             }else{
-                System.out.println("Dealer has BlackJack. You lose");
+                System.out.println("Dealer has BlackJack. " + ANSI_RED+"You lose!!"+ANSI_RESET);
                 Thread.sleep(3000);
-                dealer.printHand();
                 losses++;
                 dealerWinPot();
                 startRound();
@@ -102,7 +106,7 @@ public class Game {
         }
         //Check if player has blackjack to start
         if(player.hasBlackJack()){
-            System.out.println("You have BlackJack! You win!");
+            System.out.println("You have BlackJack! "+ANSI_GREEN+"You win!"+ANSI_RESET);
             Thread.sleep(3000);
             wins++;
             playerWinPot();
@@ -112,7 +116,7 @@ public class Game {
         player.makeDecision(deck, discarded);
 
         if(player.getHand().calculatedValue()>21){
-            System.out.println("You hand is over 21. BUSTED!");
+            System.out.println("You hand is over 21. "+ANSI_RED+"BUSTED!"+ANSI_RESET);
             Thread.sleep(3000);
             losses++;
             dealerWinPot();
@@ -136,7 +140,7 @@ public class Game {
             dealerWinPot();
             Thread.sleep(3000);
         }else if(player.getHand().calculatedValue()>dealer.getHand().calculatedValue()){
-            System.out.println("Congrats! You win!");
+            System.out.println("Congrats! "+ANSI_GREEN+"You win!"+ANSI_RESET);
             Thread.sleep(3000);
             playerWinPot();
             wins++;
