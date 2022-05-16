@@ -9,7 +9,7 @@ public class Game {
     public static final String ANSI_BLUE   = "\u001B[34m";
 
     Scanner scanner = new Scanner(System.in);
-    private int wins, losses, pushes, totalPot, playerPot, currentBet, playerBet;
+    private int wins, losses, pushes, totalPot, playerPot, currentBet;
 
 
     private Deck deck, discarded;
@@ -34,7 +34,6 @@ public class Game {
         wins = 0;
         losses = 0;
         pushes = 0;
-        playerBet = 0;
         startRound();
     }
 
@@ -68,7 +67,7 @@ public class Game {
 
         boolean loopVar = true;
         do{
-            System.out.println("How much would you like to bet?.");
+            System.out.println("How much would you like to bet?"+"\n");
             System.out.println("Warning! The casino only accepts bets in increments of" +ANSI_GREEN+" $5"+ANSI_RESET);
             String bets = scanner.nextLine();
             int bet = Integer.parseInt(bets);
@@ -82,9 +81,12 @@ public class Game {
         Thread.sleep(1000);
         System.out.println("The current total in the pot is "+ANSI_GREEN+"$"+totalPot+"\n"+ANSI_RESET);
         System.out.println("You current pot is "+ANSI_GREEN+"$"+ playerPot+ANSI_RESET);
+        Thread.sleep(500);
         //Print their hands
         dealer.printFirstHand();
+        Thread.sleep(500);
         player.printHand();
+        Thread.sleep(1000);
         //Check to see if dealer has blackjack to start
         if(dealer.hasBlackJack()){
             //show that the dealer has blackjack to start
@@ -113,6 +115,7 @@ public class Game {
             startRound();
         }
         doubleDown();
+        Thread.sleep(500);
         player.makeDecision(deck, discarded);
 
         if(player.getHand().calculatedValue()>21){
@@ -127,6 +130,7 @@ public class Game {
         dealer.printHand();
         while(dealer.getHand().calculatedValue()<17){
             dealer.hit(deck,discarded);
+            Thread.sleep(500);
         }
         //Check who wins
         if(dealer.getHand().calculatedValue()>21){
@@ -171,7 +175,7 @@ public class Game {
     }
 
     private void playerWinPot() {
-        playerPot = playerPot + totalPot;
+        playerPot = playerPot + (totalPot*2);
     }
 
     private void dealerWinPot() {

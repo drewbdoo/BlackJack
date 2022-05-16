@@ -1,6 +1,9 @@
 package com.DrewBlackJack;
 
 public class Person {
+    public static final String ANSI_BRIGHT_CYAN   = "\u001B[96m";
+    public static final String ANSI_RESET  = "\u001B[33m";
+    public static final String ANSI_RED    = "\u001B[31m";
     private String name;
     private Hand hand;
 
@@ -17,7 +20,7 @@ public class Person {
     }
     public void printHand(){
         System.out.println(this.getName()+"'s hand are the following cards:"+"\n");
-        System.out.println(this.getHand()+" Valued at: "+ this.getHand().calculatedValue()+ "\n");
+        System.out.println(ANSI_BRIGHT_CYAN+this.getHand()+" Valued at: "+ this.getHand().calculatedValue()+ "\n"+ANSI_RESET);
     }
     public void hit(Deck deck, Deck discard){
         //Check  for no cards left in the deck
