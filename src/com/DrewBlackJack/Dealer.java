@@ -14,7 +14,9 @@ public class Dealer extends Person {
         System.out.println("\n" + "The dealer deals himself and you two cards. " + "\n");
         Thread.sleep(1000);
         System.out.println("You see he is showing"+"\n");
+        Thread.sleep(500);
         System.out.println(ANSI_BRIGHT_CYAN+"* "+super.getHand().getCard(0)+" *"+ANSI_RESET);
         System.out.println(ANSI_RED+"\n"+"His second card remains hidden" + "\n"+ANSI_RESET);
+        Thread.sleep(500);
     }
 }

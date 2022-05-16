@@ -134,12 +134,12 @@ public class Game {
         }
         //Check who wins
         if(dealer.getHand().calculatedValue()>21){
-            System.out.println("Dealer busts!");
+            System.out.println(ANSI_RED+"Dealer busts!!!!!!"+ANSI_RESET);
             Thread.sleep(3000);
             playerWinPot();
             wins++;
         } else if (dealer.getHand().calculatedValue() > player.getHand().calculatedValue()) {
-            System.out.println("You loose, sowwy.");
+            System.out.println(ANSI_RED+"You loose, sowwy :("+ANSI_RESET);
             losses++;
             dealerWinPot();
             Thread.sleep(3000);
@@ -161,34 +161,47 @@ public class Game {
 
 
 
-    private void doubleDown() {
+    private void doubleDown() throws InterruptedException {
         System.out.println("Would you like to double down?");
         System.out.println("1) Yes");
         System.out.println("2) No");
         String bet = scanner.nextLine();
+        Thread.sleep(1000);
         if(bet.equals("1")){
-            currentBet = currentBet * 2;
+            System.out.println("You decide to double down!"+"\n");
+            Thread.sleep(500);
+            doubleBet();
+            System.out.println("Your new bet is $"+ANSI_GREEN+totalPot+ANSI_RESET);
             }else{
-            System.out.println("You stay with your current bet");
+            Thread.sleep(500);
+            System.out.println("You stay with your current bet"+"\n");
         }
 
     }
 
+    private void doubleBet() {
+        playerPot=playerPot-currentBet;
+        totalPot=currentBet*2;
+    }
+
     private void playerWinPot() {
         playerPot = playerPot + (totalPot*2);
+        currentBet=0;
     }
 
     private void dealerWinPot() {
         totalPot=0;
+        currentBet=0;
     }
 
     private void betToPot(int x) {
        totalPot += x;
-       playerPot -=x;
-       currentBet +=x;
+       playerPot -= x;
+       currentBet += x;
     }
     private void tieBet() {
-    playerPot= playerPot+currentBet;
+    playerPot = playerPot+currentBet;
+    currentBet=0;
     }
 
 

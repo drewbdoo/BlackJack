@@ -19,8 +19,8 @@ public class Person {
         }
     }
     public void printHand(){
-        System.out.println(this.getName()+"'s hand are the following cards:"+"\n");
-        System.out.println(ANSI_BRIGHT_CYAN+this.getHand()+" Valued at: "+ this.getHand().calculatedValue()+ "\n"+ANSI_RESET);
+        System.out.println(this.getName()+" was dealt the following hand:"+"\n");
+        System.out.println(ANSI_BRIGHT_CYAN+this.getHand()+" For a total of: "+ this.getHand().calculatedValue()+ "\n"+ANSI_RESET);
     }
     public void hit(Deck deck, Deck discard){
         //Check  for no cards left in the deck
