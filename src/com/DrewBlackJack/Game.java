@@ -46,12 +46,37 @@ public class Game {
             System.out.println("Losses: "+ANSI_GREEN+losses+ANSI_RESET);
             System.out.println("Pushes: "+ANSI_BLUE+pushes+ANSI_RESET+"\n");
             System.out.println("Your current pot is " + ANSI_GREEN+"$"+playerPot+ANSI_RESET+"\n");
+            System.out.println("Would you like to take your winnings and go home like a loser?");
+            System.out.println("1) Continue playing and possibly win it all");
+            System.out.println("2) Get up and leave while you still have a shirt on your back");
+            String reply = scanner.nextLine();
+            int replys = Integer.parseInt(reply);
+            if(replys==2){
+                if(playerPot>500){
+                    System.out.println("You made "+ANSI_GREEN+"$"+(playerPot-500)+ANSI_RESET);
+                    if(playerPot>1000){
+                        System.out.println("Congrats, you doubled your money, you pro, you");
+                        System.exit(0);
+                    }else{
+                        System.out.println("Way to go champ, next time you won't be so lucky!");
+                        System.exit(0);
+                    }
+                }else if(playerPot<500){
+                    System.out.println("You lost "+ANSI_GREEN+"$"+(500-playerPot)+"\n"+ANSI_RESET);
+                    System.out.println("At least you still have the shirt on your back."+"\n");
+                    System.out.println("Better luck next time");
+                    System.exit(0);
+                }else{
+                    System.out.println("You broke even.");
+                    System.exit(0);
+                }
+            }
             dealer.getHand().discardHandToDeck(discarded);
             player.getHand().discardHandToDeck(discarded);
         }
         if(playerPot<=0){
-            System.out.println("I'm sorry, but you appear to be out of money.");
-            System.out.println("You are escorted out of the casino and asked to return if and when you have money again.");
+            System.out.println("I'm sorry, but you appear to be "+ANSI_RED+"out of money."+ANSI_RESET+"\n");
+            System.out.println("Large intimidating men escort you out of the casino and tell you in no uncertain terms not return unless you have money.");
             System.exit(0);
         }
         //Make sure there are at least 4 cards left in deck
@@ -72,7 +97,7 @@ public class Game {
             String bets = scanner.nextLine();
             int bet = Integer.parseInt(bets);
             if(bet%5!=0){
-                System.out.println("I'm sorry, that is not a multiple of $5"+"\n");
+                System.out.println("I'm sorry, that is not a multiple of "+ANSI_GREEN+"$5"+"\n");
             }else{
                 betToPot(bet);
                 loopVar=false;
@@ -80,7 +105,7 @@ public class Game {
         }while(loopVar);
         Thread.sleep(1000);
         System.out.println("The current total in the pot is "+ANSI_GREEN+"$"+totalPot+"\n"+ANSI_RESET);
-        System.out.println("You current pot is "+ANSI_GREEN+"$"+ playerPot+ANSI_RESET);
+        System.out.println("You current bank is "+ANSI_GREEN+"$"+ playerPot+ANSI_RESET);
         Thread.sleep(500);
         //Print their hands
         dealer.printFirstHand();
@@ -187,6 +212,7 @@ public class Game {
     private void playerWinPot() {
         playerPot = playerPot + (totalPot*2);
         currentBet=0;
+        totalPot=0;
     }
 
     private void dealerWinPot() {
@@ -202,6 +228,7 @@ public class Game {
     private void tieBet() {
     playerPot = playerPot+currentBet;
     currentBet=0;
+    totalPot=0;
     }
 
 
