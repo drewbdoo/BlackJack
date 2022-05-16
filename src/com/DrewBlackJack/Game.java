@@ -98,6 +98,8 @@ public class Game {
             int bet = Integer.parseInt(bets);
             if(bet%5!=0){
                 System.out.println("I'm sorry, that is not a multiple of "+ANSI_GREEN+"$5"+"\n");
+            }else if(bet>playerPot){
+                System.out.println("You don't have that much money to bet");
             }else{
                 betToPot(bet);
                 loopVar=false;
