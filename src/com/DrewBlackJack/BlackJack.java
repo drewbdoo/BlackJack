@@ -58,11 +58,15 @@ public class BlackJack {
                 "                                                                    `8888>    `888                                      \n" +
                 "                                                                     \"8888     8%                                       \n" +
                 "                                                                      `\"888x:-\"                                         \n"+ ANSI_RESET);
-        Thread.sleep(4000);
+        Thread.sleep(3000);
 
         System.out.println("Please provide the name for the player");
         String name = scan.nextLine();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
+        System.out.println("Welcome to Drew's totally sick Blackjack, "+name+"\n"+"You begin play with $500"+"\n"+
+                "Good luck!");
+        Thread.sleep(1000);
+        System.out.println("You're gonna need it...");
         Game blackjack = new Game(name);
 
 
