@@ -14,12 +14,6 @@ public class BlackJack {
     public static final String ANSI_GREEN  = "\u001B[32m";
     public static final String ANSI_WHITE  = "\u001B[37m";
 
-
-
-
-
-
-
     public static void main(String[] args) throws InterruptedException {
         Scanner scan = new Scanner(System.in);
         System.out.println("\n" + ANSI_BLUE+
